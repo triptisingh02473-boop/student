@@ -12,7 +12,7 @@ driven by whatever CSV was most recently uploaded.
 database (see section 3). If `mysql-connector-python` isn't installed, or
 MySQL isn't reachable, the app automatically falls back to a local SQLite
 file so it still runs end to end — see section 3a. The app always prints
-which backend is actually active, both at startup and at `/api/health`.
+which backend is actually active, both at startup and at `/api/health`..
 
 ---
 
