@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Reports - Student Performance System{% endblock %}
+{% block content %}
+<header class="page-header">
+    <div>
+        <h1>Graphical Reports</h1>
+        <p class="subtitle">Generated live from the currently uploaded dataset.</p>
+    </div>
+</header>
+
+<div id="reports-empty" class="empty-state" style="display:none;">
+    <div class="empty-icon">&#9633;</div>
+    <h2>No data yet</h2>
+    <p>Upload a CSV file to generate reports.</p>
+    <a href="{{ url_for('upload_page') }}" class="btn btn-primary">Go to Upload Data</a>
+</div>
+
+<div id="reports-content" style="display:none;">
+    <section class="chart-row">
+        <div class="card chart-card">
+            <h3>Performance Category Distribution</h3>
+            <canvas id="chart-category-dist"></canvas>
+        </div>
+        <div class="card chart-card">
+            <h3>Subject-wise Average Marks</h3>
+            <canvas id="chart-subject-avg"></canvas>
+        </div>
+    </section>
+
+    <section class="chart-row">
+        <div class="card">
+            <h3>Top Performing Students</h3>
+            <table class="data-table">
+                <thead><tr><th>Student ID</th><th>Name</th><th>Overall %</th></tr></thead>
+                <tbody id="top-students-body"></tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>Students Needing Attention</h3>
+            <table class="data-table">
+                <thead><tr><th>Student ID</th><th>Name</th><th>Overall %</th><th>Risk</th></tr></thead>
+                <tbody id="attention-students-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>Overall Class Performance</h3>
+        <canvas id="chart-overview"></canvas>
+    </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Student Performance System{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-mark">SP</span>
+            <span class="brand-text">Student Performance<br>Analysis System</span>
+        </div>
+        <nav class="nav">
+            <a href="{{ url_for('index') }}" class="nav-link {% if active=='dashboard' %}active{% endif %}">
+                <span class="nav-icon">&#9632;</span> Dashboard
+            </a>
+            <a href="{{ url_for('upload_page') }}" class="nav-link {% if active=='upload' %}active{% endif %}">
+                <span class="nav-icon">&#8593;</span> Upload Data
+            </a>
+            <a href="{{ url_for('subjects_page') }}" class="nav-link {% if active=='subjects' %}active{% endif %}">
+                <span class="nav-icon">&#9776;</span> Subject Analysis
+            </a>
+            <a href="{{ url_for('prediction_page') }}" class="nav-link {% if active=='prediction' %}active{% endif %}">
+                <span class="nav-icon">&#9673;</span> Prediction
+            </a>
+            <a href="{{ url_for('reports_page') }}" class="nav-link {% if active=='reports' %}active{% endif %}">
+                <span class="nav-icon">&#9636;</span> Reports
+            </a>
+        </nav>
+        <div class="sidebar-footer">College Mini-Project</div>
+    </aside>
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,5 @@
+Student_ID,Student_Name,Branch,Semester,Data Structures,DBMS,Python,Mathematics,Java
+STU001,Aarav Mehta,CSE,3,86,82,91,78,88
+STU002,Diya Sharma,CSE,3,74,150,81,72,76
+STU003,,CSE,3,62,68,65,59,64
+STU001,Duplicate Student,CSE,3,50,55,60,65,70

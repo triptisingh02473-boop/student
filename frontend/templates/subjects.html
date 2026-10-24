@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Subject Analysis - Student Performance System{% endblock %}
+{% block content %}
+<header class="page-header">
+    <div>
+        <h1>Subject Analysis</h1>
+        <p class="subtitle">Automatically detected from the subjects present in the uploaded CSV.</p>
+    </div>
+</header>
+
+<div id="subjects-empty" class="empty-state" style="display:none;">
+    <div class="empty-icon">&#9633;</div>
+    <h2>No data yet</h2>
+    <p>Upload a CSV file to see subject-wise analysis.</p>
+    <a href="{{ url_for('upload_page') }}" class="btn btn-primary">Go to Upload Data</a>
+</div>
+
+<div id="subjects-content"></div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/subjects.js') }}"></script>
+{% endblock %}

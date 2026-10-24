@@ -1,0 +1,9 @@
+Flask==3.0.3
+pandas==2.2.2
+mysql-connector-python==8.4.0
+Werkzeug==3.0.3
+
+# mysql-connector-python is required to use the real MySQL backend.
+# If it is not installed, the app automatically falls back to a local
+# SQLite database file so it can still run (see backend/config.py DB_BACKEND
+# and README.md "Database backend" section).

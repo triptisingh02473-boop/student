@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Student Detail - Student Performance System{% endblock %}
+{% block content %}
+<header class="page-header">
+    <div>
+        <h1>Student Detail</h1>
+        <p class="subtitle">Full record for {{ student_id }}</p>
+    </div>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">&larr; Back to Dashboard</a>
+</header>
+
+<div id="detail-error" class="alert alert-error" style="display:none;"></div>
+
+<div id="detail-content" style="display:none;">
+    <section class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Student ID</div><div class="stat-value" id="d-id"></div></div>
+        <div class="stat-card"><div class="stat-label">Name</div><div class="stat-value" id="d-name"></div></div>
+        <div class="stat-card"><div class="stat-label">Branch</div><div class="stat-value" id="d-branch"></div></div>
+        <div class="stat-card"><div class="stat-label">Semester</div><div class="stat-value" id="d-semester"></div></div>
+        <div class="stat-card"><div class="stat-label">Overall %</div><div class="stat-value" id="d-overall"></div></div>
+        <div class="stat-card"><div class="stat-label">Category</div><div class="stat-value" id="d-category"></div></div>
+    </section>
+
+    <section class="card">
+        <h3>Subject Marks</h3>
+        <canvas id="chart-student-marks"></canvas>
+    </section>
+
+    <section class="card">
+        <h3>Performance Risk Assessment</h3>
+        <p id="d-risk-level" class="risk-badge"></p>
+        <p id="d-risk-reasoning" class="muted"></p>
+    </section>
+</div>
+
+<script>const STUDENT_ID = {{ student_id | tojson }};</script>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/student_detail.js') }}"></script>
+{% endblock %}

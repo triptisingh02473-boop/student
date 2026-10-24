@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Student Performance System{% endblock %}
+{% block content %}
+<header class="page-header">
+    <div>
+        <h1>Teacher Dashboard</h1>
+        <p class="subtitle">Live overview of the currently uploaded class dataset.</p>
+    </div>
+    <a href="{{ url_for('upload_page') }}" class="btn btn-primary">Upload CSV</a>
+</header>
+
+<div id="empty-state" class="empty-state" style="display:none;">
+    <div class="empty-icon">&#9633;</div>
+    <h2>Ready for class data</h2>
+    <p>Upload a CSV file to begin analysis.</p>
+    <a href="{{ url_for('upload_page') }}" class="btn btn-primary">Go to Upload Data</a>
+</div>
+
+<div id="dashboard-content" style="display:none;">
+    <section class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total Students</div>
+            <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Class Average</div>
+            <div class="stat-value" id="stat-average">0%</div>
+        </div>
+        <div class="stat-card excellent">
+            <div class="stat-label">Excellent</div>
+            <div class="stat-value" id="stat-excellent">0</div>
+        </div>
+        <div class="stat-card good">
+            <div class="stat-label">Good</div>
+            <div class="stat-value" id="stat-good">0</div>
+        </div>
+        <div class="stat-card average">
+            <div class="stat-label">Average</div>
+            <div class="stat-value" id="stat-avgcat">0</div>
+        </div>
+        <div class="stat-card risk">
+            <div class="stat-label">At Risk</div>
+            <div class="stat-value" id="stat-risk">0</div>
+        </div>
+    </section>
+
+    <section class="chart-row">
+        <div class="card chart-card">
+            <h3>Performance Category Distribution</h3>
+            <canvas id="chart-category"></canvas>
+        </div>
+        <div class="card chart-card">
+            <h3>Subject Performance Overview</h3>
+            <canvas id="chart-subjects"></canvas>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>Student List</h3>
+        <div class="table-wrap">
+            <table id="students-table" class="data-table">
+                <thead>
+                <tr>
+                    <th>Student ID</th><th>Name</th><th>Branch</th><th>Semester</th>
+                    <th>Overall %</th><th>Category</th><th></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

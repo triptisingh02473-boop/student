@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Upload Data - Student Performance System{% endblock %}
+{% block content %}
+<header class="page-header">
+    <div>
+        <h1>Upload Data</h1>
+        <p class="subtitle">Upload a class CSV file to replace the active dataset.</p>
+    </div>
+</header>
+
+<div class="card upload-card">
+    <div class="upload-info">
+        <h3>Accepted format</h3>
+        <p>A .csv file with these columns, in this order:</p>
+        <code>Student_ID, Student_Name, Branch, Semester, &lt;Subject 1&gt;, &lt;Subject 2&gt;, ...</code>
+        <p class="muted">You can have any number of subject columns, with any subject names. Marks must be numbers between 0 and 100.</p>
+        <button id="download-sample" class="btn btn-secondary">Download Sample CSV Template</button>
+    </div>
+
+    <form id="upload-form">
+        <div class="dropzone" id="dropzone">
+            <input type="file" id="csv-input" name="csv_file" accept=".csv" hidden>
+            <div class="dropzone-inner">
+                <div class="dropzone-icon">&#8593;</div>
+                <p><strong>Click to select</strong> or drag a .csv file here</p>
+                <p class="muted" id="selected-filename">No file selected</p>
+            </div>
+        </div>
+        <button type="submit" id="upload-btn" class="btn btn-primary" disabled>Upload CSV</button>
+    </form>
+
+    <div id="upload-progress" class="progress-bar" style="display:none;">
+        <div class="progress-fill"></div>
+    </div>
+
+    <div id="upload-success" class="alert alert-success" style="display:none;"></div>
+
+    <div id="upload-error" class="alert alert-error" style="display:none;">
+        <div id="upload-error-message"></div>
+        <ul id="upload-error-list"></ul>
+    </div>
+
+    <div id="upload-warnings" class="alert alert-warning" style="display:none;">
+        <ul id="upload-warnings-list"></ul>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+{% endblock %}
